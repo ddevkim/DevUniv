@@ -3,9 +3,7 @@ import type { LayoutData } from '@rune-ts/server';
 import UAParser from 'ua-parser-js';
 import favicon from '../../../public/favicon.png';
 import { ClientRouter } from '../route';
-import { concurrentRenderHandler } from '../../pages/live-1/concurrentRenderHandler';
-import { mplRenderHandler } from '../../pages/live-2/mplRenderHandler';
-import { objectFeRenderHandler } from '../../pages/live-3/objectFeRenderHandler';
+import { pixelArtRenderHandler } from '../../pages/RenderHandler';
 
 const server = app();
 server.use((req, res, next) => {
@@ -34,18 +32,6 @@ server.use((req, res, next) => {
 });
 
 server.get(
-  ClientRouter['/concurrent'].toString(),
-  concurrentRenderHandler(ClientRouter['/concurrent']),
-);
-
-server.get(ClientRouter['/mpl'].toString(), mplRenderHandler(ClientRouter['/mpl']));
-
-server.get(
-  ClientRouter['/object-fe'].toString(),
-  objectFeRenderHandler(ClientRouter['/object-fe']),
-);
-
-server.get(
-  ClientRouter['/object-fe2'].toString(),
-  objectFeRenderHandler(ClientRouter['/object-fe2']),
+  ClientRouter['/pixel-art'].toString(),
+  pixelArtRenderHandler(ClientRouter['/pixel-art']),
 );
