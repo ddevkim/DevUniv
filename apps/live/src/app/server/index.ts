@@ -6,6 +6,7 @@ import { ClientRouter } from '../route';
 import { concurrentRenderHandler } from '../../pages/live-1/concurrentRenderHandler';
 import { mplRenderHandler } from '../../pages/live-2/mplRenderHandler';
 import { objectFeRenderHandler } from '../../pages/live-3/objectFeRenderHandler';
+import { pixelArtRenderHandler } from '../../projects/PixelArt/RenderHandler';
 
 const server = app();
 server.use((req, res, next) => {
@@ -48,4 +49,9 @@ server.get(
 server.get(
   ClientRouter['/object-fe2'].toString(),
   objectFeRenderHandler(ClientRouter['/object-fe2']),
+);
+
+server.get(
+  ClientRouter['/pixel-art'].toString(),
+  pixelArtRenderHandler(ClientRouter['/pixel-art']),
 );
